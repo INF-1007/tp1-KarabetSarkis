@@ -19,35 +19,81 @@ Objectif :
 """
 
 FACTEURS = [1.30, 1.15, 1.05, 0.95, 0.95, 1.05, 1.15, 1.30]
-sections = ["A", "B", "C", "D", "E", "F", "G", "H"]
-intensite=[]
-#niveau = []
+# sections = ["A", "B", "C", "D", "E", "F", "G", "H"]
+# intensite=[]
+# niveau = []
 
-try: 
-    for i in range(8):
-        nombres_personnes = int(input(f"Personnes dans les sections {sections[i]}? "))
+# try: 
+#     for i in range(8):
+#         nombres_personnes = int(input(f"Personnes dans les sections {sections[i]}? "))
+#         if nombres_personnes < 0:
+#             print("Erreur - donnees invalides.") 
+#             break
+#         else:
+#             intensite.append(nombres_personnes * FACTEURS[i])
+#             max_i = max(intensite) 
+#             if max_i == 0:
+#                 niveau = [0]*8
+#             else:
+#               niveau.append(int((intensite[i]/ max_i) * 10 + 0.5))
+                
+#     for i in range(10,0,-1):
+#         print(f"{i:>2} |", end = "")  
+#         for j in range(len(niveau)):
+#                 if i <= niveau[j]:
+#                     print("❚ ", end = "")
+#                 else:
+#                     print(". ", end = "")
+#         print("")
+#     print("    A B C D E F G H")
+
+# except ValueError:
+#     print("Erreur - donnees invalides.")
+
+sections = ["A", "B", "C", "D", "E", "F", "G", "H"]
+intensites = []
+niveaux = []
+nombre_lignes = 10
+try:
+    for i in range(len(sections)):
+        nombres_personnes = int(input(f"Personnes dans les sections {sections[i]} "))
         if nombres_personnes < 0:
             print("Erreur - donnees invalides.") 
             break
-        else:
-            intensite.append(nombres_personnes * FACTEURS[i])
-            max_i = max(intensite) 
-            if max_i == 0:
-                niveau = [0]*8
+        intensites.append(nombres_personnes * FACTEURS[i])
+    
+    max_intensite = max(intensites) 
+    
+    for i in range(len(sections)):
+        if max_intensite == 0:
+            niveaux = [0]*8 
+        else: 
+            niveaux.append(int((intensites[i] / max_intensite) * 10 + 0.5)) 
+    
+    for niveau_ligne in range(nombre_lignes,0,-1):
+        print(f"{niveau_ligne:>2} |", end = "") 
+        for colonnes in range(len(sections)):
+            if niveaux[colonnes] >= niveau_ligne:
+                print("❚ ", end = "")
             else:
-              niveau.append(int((intensite[i]/ max_i) * 10 + 0.5))
-                
-    for i in range(10,0,-1):
-        print(f"{i:>2} |", end = "")  
-        for j in range(8):
-                if i <= niveau[j]:
-                    print("❚ ", end = "")
-                else:
-                    print(". ", end = "")
+                print(". ", end = "")
         print("")
-    print("    A B C D E F G H")
+    print("    A B C D E F G H")    
+
+    
+
+
+
+
+       
+
+
+
+
+
+
+
+
 
 except ValueError:
     print("Erreur - donnees invalides.")
-
-
