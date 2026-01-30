@@ -19,12 +19,35 @@ Objectif :
 """
 
 FACTEURS = [1.30, 1.15, 1.05, 0.95, 0.95, 1.05, 1.15, 1.30]
+sections = ["A", "B", "C", "D", "E", "F", "G", "H"]
+intensite=[]
+niveau = []
 
-# TODO: Lire 8 entiers (un par ligne) dans une liste personnes
-#       En cas d'erreur de conversion ou valeur negative -> afficher le message d'erreur et quitter
+try: 
+    for i in range(8):
+        nombres_personnes = int(input(f"Personnes dans les sections {sections[i]}? "))
+        if nombres_personnes < 0:
+            print("Erreur - donnees invalides.") 
+            break
+        else:
+            intensite.append(nombres_personnes * FACTEURS[i])
+            max_i = max(intensite) 
+            if max_i == 0:
+                niveau = 0
+            else:
+              niveau.append(int((intensite[i]/ max_i) * 10 + 0.5))
+                
+    for i in range(10,0,-1):
+        print(f"{i:>2} |", end = "")  
+        for j in range(len(sections)):
+                if i <= niveau[j]:
+                    print("❚ ", end = "")
+                else:
+                    print(". ", end = "")
+        print("")
+    print("    A B C D E F G H")
 
-# TODO: Calculer les intensites brutes (liste de 8 floats)
+except ValueError:
+    print("Erreur - donnees invalides.")
 
-# TODO: Calculer les niveaux normalises (liste de 8 entiers dans [0,10])
 
-# TODO: Afficher la grille (10 lignes) puis la ligne des labels
