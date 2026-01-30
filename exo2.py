@@ -21,7 +21,7 @@ Objectif :
 FACTEURS = [1.30, 1.15, 1.05, 0.95, 0.95, 1.05, 1.15, 1.30]
 sections = ["A", "B", "C", "D", "E", "F", "G", "H"]
 intensite=[]
-niveau = []
+#niveau = []
 
 try: 
     for i in range(8):
@@ -33,13 +33,13 @@ try:
             intensite.append(nombres_personnes * FACTEURS[i])
             max_i = max(intensite) 
             if max_i == 0:
-                niveau = 0
+                niveau = [0]*8
             else:
               niveau.append(int((intensite[i]/ max_i) * 10 + 0.5))
                 
     for i in range(10,0,-1):
         print(f"{i:>2} |", end = "")  
-        for j in range(len(sections)):
+        for j in range(8):
                 if i <= niveau[j]:
                     print("❚ ", end = "")
                 else:
