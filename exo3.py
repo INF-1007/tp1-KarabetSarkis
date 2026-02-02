@@ -26,12 +26,49 @@ Prompts EXACTS :
 4) "Entrez le temps de controle a l'entree (en minutes) : "
 """
 
-# TODO: Importer math
+import math 
 
-# TODO: Lire les 4 valeurs
 
-# TODO: Validation
+distance = float(input("Entrez la distance jusqu'au CEPSUM (en kilometres) : "))
+attente_navette = float(input("Entrez le temps d'attente de la navette (en minutes) : "))
+temps_metro = float(input("Entrez le temps du trajet en metro (en minutes) : "))
+controle = float(input("Entrez le temps de controle a l'entree (en minutes) : "))
 
-# TODO: Calculer, arrondir (ceil) et determiner le(s) meilleur(s)
+if distance < 0 or attente_navette < 0 or temps_metro < 0 or controle < 0:
+    print("Erreur - donnees invalides.")
+else:
+    marche = round(distance * 60 / 5 + controle, 0)
+    navette = round(attente_navette + distance * 60 / 18 + controle, 0)
+    metro   = round(temps_metro + controle, 0)
 
-# TODO: Afficher la phrase exacte
+    if marche <= navette:
+        if marche == navette:
+            if marche <= metro:
+                if marche == metro:
+                    print("Egalite : marcher, navette et metro.")
+                else:
+                    print("Egalite : marcher et navette.")
+            else:
+                print("Option la plus rapide : metro.")
+        else:
+            if marche <= metro:
+                if marche == metro:
+                    print("Egalite : marcher et metro.")
+                else:
+                    print("Option la plus rapide : marcher.")
+            else:
+                print("Option la plus rapide : marcher.")
+    else:
+        if navette <= metro:
+            if navette == metro:
+                print("Egalite : navette et metro.")
+            else:
+                print("Option la plus rapide : navette.")
+        else:
+            print("Option la plus rapide : metro.")
+        
+
+          
+
+
+
