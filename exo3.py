@@ -37,9 +37,9 @@ controle = float(input("Entrez le temps de controle a l'entree (en minutes) : ")
 if distance < 0 or attente_navette < 0 or temps_metro < 0 or controle < 0:
     print("Erreur - donnees invalides.")
 else:
-    marche = round(distance * 60 / 5 + controle, 0)
-    navette = round(attente_navette + distance * 60 / 18 + controle, 0)
-    metro   = round(temps_metro + controle, 0)
+    marche = math.ceil(distance * 60 / 5 + controle)
+    navette = math.ceil(attente_navette + distance * 60 / 18 + controle)
+    metro   = math.ceil(temps_metro + controle)
 
     if marche <= navette:
         if marche == navette:
@@ -57,7 +57,7 @@ else:
                 else:
                     print("Option la plus rapide : marcher.")
             else:
-                print("Option la plus rapide : marcher.")
+                print("Option la plus rapide : metro.")
     else:
         if navette <= metro:
             if navette == metro:
