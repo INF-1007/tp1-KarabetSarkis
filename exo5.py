@@ -36,9 +36,34 @@ Conseil :
 """
 
 # TODO: Lire n (int) et statut (str)
+nbr_billet = int(input("Entrez le nombre de billets necessaires : "))
+statut  = input("Entrez le statut etudiant (O/N) : ")
 
 # TODO: Validation (n >= 0 et statut dans {O, N})
+if nbr_billet < 0 or (not statut == "O" and not statut == "N"):
+    print("Erreur - donnees invalides.")
+else:
+    nbr_billet_init = nbr_billet 
+    billets_24, billets_12, billets_5, billet_uni = 0,0,0,0 
+    
+    while nbr_billet_init >= 24:
+        billets_24 += 1
+        nbr_billet_init = nbr_billet_init-24
+    while nbr_billet_init >= 12:
+        billets_12 += 1
+        nbr_billet_init = nbr_billet_init-12 
+    while nbr_billet_init >= 5:
+        billets_5 += 1
+        nbr_billet_init = nbr_billet_init-5 
+    while nbr_billet_init > 0: 
+        billet_uni += 1
+        nbr_billet_init = nbr_billet_init-1 
+    
+    if statut == "O":
+        prix = (billets_24*66 + billets_12*36 + billets_5*15.75)*0.88 + billet_uni*3.6 
+    else:
+        prix = (billets_24*66 + billets_12*36 + billets_5*15.75 + billet_uni*3.6) 
+    
+    print(f"Forfaits de 24 billets - {billets_24},Forfaits de 12 billets - {billets_12},Forfaits de 5 billets - {billets_5},Billets unitaires - {billet_uni},Total billets - {nbr_billet},Prix total - {prix:.2f}$".replace(",", "\n") )
+ 
 
-# TODO: Chercher la meilleure combinaison (A, B, C, D)
-
-# TODO: Calculer et afficher le resultat exact (6 lignes)

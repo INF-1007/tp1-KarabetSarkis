@@ -42,15 +42,8 @@ else:
     angle_deg = math.degrees(angle)
 
     if pente > 8:
-        print(
-        f"""            Pente: {pente:.2f}%
-            Angle: {angle_deg:.2f} deg
-            Conforme: NON
-            Depassement: {(pente - 8):.2f}%""")
+        print(f"Pente: {pente:.2f}%\nAngle: {angle_deg:.2f} deg\nConforme: NON\nDepassement: {(pente - 8):.2f}%")
     else:
-        print(
-        f"""            Pente: {pente:.2f}%
-            Angle: {angle_deg:.2f} deg
-            Conforme: OUI""")
+        print(f"Pente: {pente:.2f}%\nAngle: {angle_deg:.2f} deg\nConforme: OUI")
 
 

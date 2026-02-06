@@ -27,14 +27,14 @@ Prompts EXACTS a utiliser :
 # TODO: Lire les 4 valeurs (int)
 try:
     nom_complet = input("Entrez votre nom complet : ")
-    matchs_football = int(input("Entrez le nombre de matchs de football des Carabins suivis cet automne :"))
+    matchs_football = int(input("Entrez le nombre de matchs de football des Carabins suivis cet automne : "))
     duree_football = int(input("Entrez la duree moyenne d'un match de football suivi (en minutes) : "))
     matchs_soccer = int(input("Entrez le nombre de matchs de soccer feminin des Carabins suivis cet automne : "))
     duree_soccer = int(input("Entrez la duree moyenne d'un match de soccer suivi (en minutes) : ")) 
 
-    if (matchs_football or matchs_soccer) < 0:
+    if matchs_football < 0  or matchs_soccer < 0:
         print("Erreur - donnees invalides.")
-    elif (duree_football or duree_soccer) <= 0:
+    elif duree_football <= 0 or duree_soccer <= 0:
         print("Erreur - donnees invalides.") 
     else:
         
@@ -52,15 +52,8 @@ try:
         print(f"Football (Carabins): {matchs_football} match(s), {duree_football_heur}h{duree_football_min_rest:02d} de visionnage")
         print(f"Soccer (Carabins): {matchs_soccer} match(s), {duree_soccer_heur}h{duree_soccer_min_rest:02d} de visionnage")
         print(f"Total: {duree_total_heur}h{duree_total_min_rest:02d}")
+
 except ValueError:
     print("Erreur - donnees invalides.") 
     
 
-# TODO: Valider les donnees (matchs >= 0, durees > 0)
-
-
-# TODO: Calculer les minutes totales (football, soccer, total)
-
-
-
-# TODO: Convertir en heures/minutes et afficher exactement 4 lignes
