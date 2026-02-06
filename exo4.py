@@ -41,16 +41,16 @@ else:
     angle = math.atan(hauteur_m / longueur_m)
     angle_deg = math.degrees(angle)
 
-if pente > 8:
-    print(
-    f"""        Pente: {pente:.2f} %
-        Angle:  {angle_deg:.2f} deg
-        Conforme: NON
-        Depassement: {(pente - 8):.2f} % """)
-else:
-    print(
-    f"""        Pente: {pente:.2f} %
-        Angle:  {angle_deg:.2f} deg
-        Conforme: OUI """)
+    if pente > 8:
+        print(
+        f"""            Pente: {pente:.2f}%
+            Angle: {angle_deg:.2f} deg
+            Conforme: NON
+            Depassement: {(pente - 8):.2f}%""")
+    else:
+        print(
+        f"""            Pente: {pente:.2f}%
+            Angle: {angle_deg:.2f} deg
+            Conforme: OUI""")
 
 
