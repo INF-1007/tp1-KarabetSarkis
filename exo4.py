@@ -25,12 +25,32 @@ Prompts EXACTS :
 2) "Entrez la longueur horizontale (en metres) : "
 """
 
-# TODO: Importer math
+# TODO: Importer math 
+import math 
 
 # TODO: Lire hauteur_cm et longueur_m
+hauteur_cm = float(input("Entrez la hauteur a franchir (en centimetres) : "))
+longueur_m = float(input("Entrez la longueur horizontale (en metres) :"))
 
 # TODO: Validation
+if hauteur_cm < 0 or longueur_m <= 0:
+    print("Erreur - donnees invalides.")
+else:
+    hauteur_m = hauteur_cm / 100
+    pente = (hauteur_m / longueur_m) * 100
+    angle = math.atan(hauteur_m / longueur_m)
+    angle_deg = math.degrees(angle)
 
-# TODO: Calcul pente et angle
+if pente > 8:
+    print(
+    f"""        Pente: {pente} %
+        Angle:  {angle_deg} deg
+        Conforme: NON
+        Depassement: {pente - 8} % """)
+else:
+    print(
+    f"""        Pente: {pente} %
+        Angle:  {angle_deg} deg
+        Conforme: OUI """)
 
-# TODO: Affichage exact (+ ligne depassement si necessaire)
+
